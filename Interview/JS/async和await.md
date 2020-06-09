@@ -325,4 +325,26 @@ doIt();
 
 就目前来说，已经理解 async/await 了吧？但其实还有一些事情没提及——Promise 有可能 reject 啊，怎么处理呢？如果需要并行处理3个步骤，再等待所有结果，又该怎么处理呢？
 
-[阮一峰老师已经说过了](http://www.ruanyifeng.com/blog/2015/05/async.html)，我就懒得说了。
+[阮一峰老师已经说过了](http://www.ruanyifeng.com/blog/2015/05/async.html)
+
+## 注意点
+
+await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
+
+> ```javascript
+> async function myFunction() {
+>   try {
+>     await somethingThatReturnsAPromise();
+>   } catch (err) {
+>     console.log(err);
+>   }
+> }
+> 
+> // 另一种写法
+> 
+> async function myFunction() {
+>   await somethingThatReturnsAPromise().catch(function (err){
+>     console.log(err);
+>   });
+> }
+> ```
