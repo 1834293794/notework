@@ -33,8 +33,6 @@ Promise {<resolved>: "hello async"}
 
 所以，async 函数返回的是一个 Promise 对象。从[文档](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)中也可以得到这个信息。async 函数（包含函数语句、函数表达式、Lambda表达式）会返回一个 Promise 对象，如果在函数中 `return` 一个直接量，async 会把这个直接量通过 `Promise.resolve()` 封装成 Promise 对象。
 
-
-
 async 函数返回的是一个 Promise 对象，所以在最外层不能用 await 获取其返回值的情况下，我们当然应该用原来的方式：`then()` 链来处理这个 Promise 对象，就像这样
 
 ```
@@ -171,13 +169,13 @@ async function test() {
 test();
 ```
 
-眼尖的同学已经发现 `takeLongTime()` 没有申明为 `async`。实际上，**`takeLongTime()` 本身就是返回的 Promise 对象，加不加 `async` 结果都一样**，如果没明白，请回过头再去看看上面的“async 起什么作用”。
+眼尖的同学已经发现 `takeLongTime()` 没有申明为 `async`。实际上，**`takeLongTime()` 本身就是返回的 Promise 对象，加不加 `async` 结果都一样**
 
 又一个疑问产生了，这两段代码，两种方式对异步调用的处理（实际就是对 Promise 对象的处理）差别并不明显，甚至使用 async/await 还需要多写一些代码，那它的优势到底在哪？
 
 ### 2.2. async/await 的优势在于处理 then 链
 
-单一的 Promise 链并不能发现 async/await 的优势，但是，如果需要处理由多个 Promise 组成的 then 链的时候，优势就能体现出来了（很有意思，Promise 通过 then 链来解决多层回调的问题，现在又用 async/await 来进一步优化它）。
+单一的 Promise 链并不能发现 async/await 的优势，但是，如果需要处理由多个 Promise 组成的 then 链的时候，优势就能体现出来了（很有意思，**Promise 通过 then 链来解决多层回调的问题，现在又用 async/await 来进一步优化它**）。
 
 假设一个业务，分多个步骤完成，每个步骤都是异步的，而且依赖于上一个步骤的结果。我们仍然用 `setTimeout` 来模拟异步操作：
 
