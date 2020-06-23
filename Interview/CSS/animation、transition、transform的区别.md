@@ -48,6 +48,19 @@ CSS 过渡 由简写属性[ ](https://developer.mozilla.org/en-US/docs/CSS/trans
 
 指定延迟，即属性开始变化时与过渡开始发生时之间的时长。
 
+例子
+
+```
+div {
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+div:hover {
+  opacity: 0;
+}
+```
+
 ## [animation](https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation)
 
 ### Keyframes介绍：

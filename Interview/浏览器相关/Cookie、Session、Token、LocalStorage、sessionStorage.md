@@ -1,4 +1,4 @@
-# Cookie、Session、localStorage、sessionStorage
+# Cookie、Session、Token、localStorage、sessionStorage
 
 ## Cookie
 
