@@ -69,6 +69,8 @@ CDN可以对不同区域的网络进行优化。例如用BootCDN进行优化的�
 <meta http-equiv="x-dns-prefetch-control" content="on">
 ```
 
+**ps: webpack中有类似的预获取/预加载模块(prefetch/preload module)，详情可见webpack笔记5**
+
 
 
 ## 2、渲染优化
